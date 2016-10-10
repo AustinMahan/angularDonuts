@@ -1,0 +1,23 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <div class="oneShop">
+      <h1><a href="/employees/{{employee.id}}">{{employee.first_name}} {{employee.last_name}}</a></h1>
+      <p>
+        Working at: {{employee.work.name}} in {{employee.work.city}}
+      </p>
+      <p>
+        Favorite Donut: {{employee.donut.name}} with {{employee.donut.topping}}
+      </p>
+      <button class='btn edit'><a href="/employees/{{employee.id}}/edit">Edit</a></button>
+      <form action="/employees/{{employee.id}}/delete" method="post">
+        <input type="submit" value="Delete" class="btn del">
+      </form>
+    </div>
+  </div>
+
+{% endblock %}

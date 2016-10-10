@@ -1,0 +1,26 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <h1>{{shop.name}}</h1>
+    <form action="/shops/{{shop.id}}/edit" method="post" class="col-md-4">
+      <label for="name">Name</label>
+      <input class="form-control" type="text" name="name" value="{{shop.name}}">
+
+      <label for="city">City</label>
+      <input class="form-control" type="text" name="city" value="{{shop.city}}">
+
+      <label for="donuts">Donuts sold here</label>
+      {% for donut in shop.donuts %}
+      <br>
+      <label>{{donut.name}}</label>
+      <input type="checkbox" name="donuts" value="{{donut.id}}">
+      {% endfor %}
+      <input class="form-control" type="submit" value="Edit">
+    </form>
+  </div>
+
+{% endblock %}

@@ -1,0 +1,28 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <h1>{{shop.name}}</h1>
+    <p>
+      Located in: {{shop.city}}
+    </p>
+    <p>
+      Donuts sold here: <ul>
+      {% for donut in shop.donuts %}
+      <li><a href="/donuts/{{donut.id}}">{{donut.name}}</a></li>
+      {% endfor %}
+      </ul>
+    </p>
+    <p>
+      Employees: <ul>
+      {% for employee in shop.employees %}
+      <li><a href="/employees/{{employee.id}}">{{employee.first_name}}</a></li>
+      {% endfor %}
+      </ul>
+    </p>
+  </div>
+
+{% endblock %}

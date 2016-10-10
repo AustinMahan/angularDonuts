@@ -1,0 +1,25 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <form class="col-md-4" action="/donuts/new" method="post">
+      <label for="name">Name</label>
+      <input class="form-control" type="text" name="name" id="name">
+      <label for="topping">Topping</label>
+      <input class="form-control" type="text" name="topping" id="topping">
+      <label for="price">Price</label>
+      <input class="form-control" type="text" name="price" id="price">
+      <label for="shop_id">Shop sold at:</label>
+      <select class="form-control" name="shop_id">
+        {% for shop in shops %}
+        <option value="{{shop.id}}">{{shop.name}}</option>
+        {% endfor %}
+      </select>
+      <input class="form-control" type="submit" name="Add">
+    </form>
+  </div>
+
+{% endblock %}

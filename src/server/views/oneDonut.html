@@ -1,0 +1,30 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <div class="oneShop">
+      <h1><a href="/donuts/{{donut.id}}">{{donut.name}}</a></h1>
+      <p>
+        Topping: {{donut.topping}}
+      </p>
+      <p>
+        Price: {{donut.price}}
+      </p>
+      <p>
+        Sold at: <ul>
+          {% for shop in donut.shops %}
+            <li> <a href="/shops/{{shop.id}}">{{shop.name}}</a></li>
+          {% endfor %}
+        </ul>
+      </p>
+      <button class='btn edit'><a href="/donuts/{{donut.id}}/edit">Edit</a></button>
+      <form action="/donuts/{{donut.id}}/delete" method="post">
+        <input type="submit" value="Delete" class="btn del">
+      </form>
+    </div>
+  </div>
+
+{% endblock %}
