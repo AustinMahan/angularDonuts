@@ -5,6 +5,7 @@ var {getAll, getWhere, updateShop, newShop, deleteWhere, getEmps, getDonuts, get
 const indexController = require('../controllers/index');
 
 router.get('/', function (req, res, next) {
+  console.log(req.session);
   getAll('shops')
   .then((data) => res.render('index', {shops: data}))
 });

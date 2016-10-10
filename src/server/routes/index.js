@@ -7,4 +7,8 @@ router.get('/', function (req, res, next) {
   res.redirect('/shops')
 });
 
+router.get('/login', function (req, res, next) {
+  res.render('login')
+})
+
 module.exports = router;

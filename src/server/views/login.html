@@ -1,0 +1,17 @@
+{% extends "_base.html" %}
+
+{% block title %}{% endblock %}
+
+{% block content %}
+
+  <div class="container">
+    <form class="col-md-4" action="/login" method="post">
+      <label for="user_name">Name</label>
+      <input class="form-control" type="text" name="user_name" id="user_name">
+      <label for="password">Password</label>
+      <input class="form-control" type="text" name="password" id="password">
+      <input class="form-control" type="submit" name="Login">
+    </form>
+  </div>
+
+{% endblock %}

@@ -1,5 +1,4 @@
 body {
-  padding: 50px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -17,4 +16,15 @@ a {
 }
 .oneShop{
   clear: both;
+}
+
+header{
+  position: absolute;
+  top: 0px;
+  width: 100%;
+  background-color: grey;
+  padding: 20px;
+}
+.container{
+  margin-top: 100px;
 }
