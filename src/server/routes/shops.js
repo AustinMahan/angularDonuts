@@ -5,26 +5,24 @@ var {getAll, getWhere, updateShop, newShop, deleteWhere, getEmps, getDonuts, get
 const indexController = require('../controllers/index');
 
 router.get('/', function (req, res, next) {
-  console.log(req.session);
   getAll('shops')
-  .then((data) => res.render('index', {shops: data}))
+  .then((data) => res.send(data))
 });
 
 router.get('/new', function (req, res, next) {
-  res.render('new_shop')
-})
+  res.send('newShop')
 
 router.get('/:id', function(req, res, next) {
   getWhere('shops', 'id', req.params.id)
   .then(getEmps)
   .then(getDonutsSold)
-  .then((data) => data.length ? res.render('oneShop', {shop: data[0]}) : res.render('error', { message: 'Shop not found'}))
+  .then((data) => data.length ? res.send(data[0]) : res.send({ message: 'Shop not found'}))
 })
 
 router.get('/:id/edit', function(req, res, next) {
   getWhere('shops', 'id', req.params.id)
   .then(getDonuts)
-  .then((data) => res.render('editShop', {shop:data[0]}))
+  .then((data) => res.send(data[0]))
 })
 
 router.post('/:id/edit', function(req, res, next) {

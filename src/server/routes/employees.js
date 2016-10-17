@@ -8,7 +8,7 @@ router.get('/', function (req, res, next) {
   getAll('employees')
   .then(getEmpWork)
   .then(getEmpDonut)
-  .then((data) => res.render('employees', {employees: data}))
+  .then((data) => res.send({employees: data}))
 });
 
 router.get('/new', function (req, res, next) {
@@ -29,7 +29,7 @@ router.get('/new', function (req, res, next) {
     getAll('shops')
     .then((data) => {
       shops = data
-      res.render('new_emp', {donuts, shops})
+      res.send({donuts, shops})
     })
   })
 })
@@ -38,7 +38,7 @@ router.get('/:id', function(req, res, next) {
   getWhere('employees', 'id', req.params.id)
   .then(getEmpWork)
   .then(getEmpDonut)
-  .then((data) => data.length ? res.render('oneEmp', {employee: data[0]}) : res.render('error', { message: 'Shop not found'}))
+  .then((data) => data.length ? res.send({employee: data[0]}) : res.send({ message: 'Shop not found'}))
 })
 
 router.get('/:id/edit', function(req, res, next) {
@@ -51,7 +51,7 @@ router.get('/:id/edit', function(req, res, next) {
   getWhere('employees', 'id', req.params.id)
   .then(getEmpWork)
   .then(getEmpDonut)
-  .then((data) => res.render('editEmp',{employee: data[0], donuts, shops}))
+  .then((data) => res.send(employee: data[0], donuts, shops}))
 })
 
 router.post('/:id/edit', function(req, res, next) {

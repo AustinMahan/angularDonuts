@@ -7,18 +7,18 @@ const indexController = require('../controllers/index');
 router.get('/', function (req, res, next) {
   getAll('donuts')
   .then(getDonutShops)
-  .then((data) => res.render('donuts', {donuts: data}))
+  .then((data) => res.send(data))
 });
 
 router.get('/new', function (req, res, next) {
   getAll('shops')
-  .then((data) => res.render('new_donut', {shops: data}))
+  .then((data) => res.send(data))
 })
 
 router.get('/:id', function(req, res, next) {
   getWhere('donuts', 'id', req.params.id)
   .then(getDonutShops)
-  .then((data) => data.length ? res.render('oneDonut', {donut: data[0]}) : res.render('error', { message: 'Donut not found'}))
+  .then((data) => data.length ? res.send(data[0]) : res.send({'Donut not found'}))
 })
 
 router.get('/:id/edit', function(req, res, next) {
@@ -27,7 +27,7 @@ router.get('/:id/edit', function(req, res, next) {
   .then((data) => shops = data)
   .then(() => {
     getWhere('donuts', 'id', req.params.id)
-    .then((data) => res.render('editDonut', {donut: data[0], shops}))
+    .then((data) => res.send(data[0]))
   })
 })
 
